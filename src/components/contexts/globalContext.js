@@ -1,4 +1,6 @@
 import { useState, useEffect, createContext } from 'react';
+import validator from 'email-validator';
+import Auth from '../../services/auth';
 
 const GlobalContext = createContext({});
 
@@ -17,10 +19,25 @@ export function GlobalProvider({ children }) {
         loadUserCredentials();
     }, [])
 
+    function login(data) {
+        const isValidEmail = validator.validate(data.email);
+        
+        if(!isValidEmail) {
+            alert("Insira um email válido");
+            return;
+        }
+        const response = Auth.login(data);
+        if(response) {
+            setIsLogged(true);
+            setUserData(response);
+        }
+    }
+
     return (
         <GlobalContext.Provider value={{
             isLogged,
-            userData
+            userData,
+            login
         }}>
             { children }
         </GlobalContext.Provider>

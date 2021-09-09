@@ -1,6 +1,6 @@
 import API from './api';
 
-export async function login(data) {
+async function login(data) {
     const response = await API.post("/auth/login", data)
         .catch(() => false)
 
@@ -8,10 +8,17 @@ export async function login(data) {
     else return response.data;
 }
 
-export async function register(data) {
-    const response = await API.post("/auth/sign-up")
+async function register(data) {
+    const response = await API.post("/auth/sign-up", data)
         .catch(() => false)
 
     if(response === false) return false;
     else return response.data;
 }
+
+const Auth = {
+    login,
+    register
+}
+
+export default Auth;

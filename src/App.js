@@ -1,7 +1,7 @@
 import { Switch, Route, Redirect } from 'react-router';
 import { useContext, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
-import ResetCss from './components/GlobalStyled/Reset';
+import ResetCss from './components/sharedStyles/Reset';
 
 import GlobalContext from './components/contexts/globalContext';
 import Auth from './pages/Auth';
