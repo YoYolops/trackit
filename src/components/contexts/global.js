@@ -3,8 +3,7 @@ import { useState, useEffect, createContext } from 'react';
 const GlobalContext = createContext({});
 
 export function GlobalProvider({ children }) {
-    const [ isLogged, setIsLogged ] = useState(false);
-    const [ loading, setLoading ] = useState(true);
+    const [ isLogged, setIsLogged ] = useState(true);
     const [ userData, setUserData ] = useState();
 
     useEffect(() => {
@@ -13,7 +12,6 @@ export function GlobalProvider({ children }) {
             if(userCredentials) {
                 setUserData({...userCredentials});
                 setIsLogged(true);
-                setLoading(false);
             }
         }
         loadUserCredentials();
@@ -21,7 +19,8 @@ export function GlobalProvider({ children }) {
 
     return (
         <GlobalContext.Provider value={{
-            isLogged
+            isLogged,
+            userData
         }}>
             { children }
         </GlobalContext.Provider>

@@ -1,11 +1,25 @@
-import { Switch, Route } from 'react-router';
+import { Switch, Route, Redirect } from 'react-router';
+import { useContext, useEffect } from 'react';
+import { useHistory } from 'react-router-dom';
+
+import GlobalContext from './components/contexts/global';
+import Auth from './pages/Auth';
+import Main from './pages/Main';
 
 function App() {
+  const { isLogged, userData } = useContext(GlobalContext);
+  const history = useHistory();
+
+  useEffect(() => {
+    if(isLogged) history.push("/main/habits", userData);
+  }, [isLogged, history, userData])
 
   return (
     <div className="App">
       <Switch>
-        <Route exact path="/"  />
+        <Route exact path="/" component={() => <Redirect to="/auth/login" />} />
+        <Route path="/auth" component={ Auth } />
+        <Route path="/main" component={ Main } />
       </Switch>
     </div>
   );
