@@ -1,8 +1,8 @@
 import { Switch, Route } from 'react-router';
 import { useRouteMatch } from 'react-router-dom';
 
-import Register from './views/Register';
-import Login from './views/Login';
+import Register from './components/Register';
+import Login from './components/Login';
 
 function Auth() {
     const { path } = useRouteMatch()

@@ -3,7 +3,7 @@ import { useState, useEffect, createContext } from 'react';
 const GlobalContext = createContext({});
 
 export function GlobalProvider({ children }) {
-    const [ isLogged, setIsLogged ] = useState(true);
+    const [ isLogged, setIsLogged ] = useState(false);
     const [ userData, setUserData ] = useState();
 
     useEffect(() => {

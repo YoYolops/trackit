@@ -1,8 +1,9 @@
 import { Switch, Route, Redirect } from 'react-router';
 import { useContext, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
+import ResetCss from './components/GlobalStyled/Reset';
 
-import GlobalContext from './components/contexts/global';
+import GlobalContext from './components/contexts/globalContext';
 import Auth from './pages/Auth';
 import Main from './pages/Main';
 
@@ -16,6 +17,7 @@ function App() {
 
   return (
     <div className="App">
+      <ResetCss />
       <Switch>
         <Route exact path="/" component={() => <Redirect to="/auth/login" />} />
         <Route path="/auth" component={ Auth } />
