@@ -55,7 +55,7 @@ function HabitsView() {
 
                 {
                     !isLoading && userHabits.length === 0
-                        ? <p>Você não tem nenhuma hábito cadastrado ainda, adicione um hábito para começar a trackear!</p>
+                        ? <p className="warningText">Você não tem nenhuma hábito cadastrado ainda, adicione um hábito para começar a trackear!</p>
                         : null
                 }
             </MainContentContainer>

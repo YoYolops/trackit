@@ -8,7 +8,7 @@ export const MainContentContainer = styled.section`
     background-color: var(--lightGrey);
     min-height: 100vh;
 
-    p {
+    .warningText {
         font-family: 'Lexend Deca', sans-serif;
         font-size: 17px;
         color: var(--darkGrey);
