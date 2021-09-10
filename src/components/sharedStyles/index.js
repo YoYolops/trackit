@@ -6,9 +6,9 @@ export const Button = styled.button`
     background-color: ${ props => props.filled ? "var(--lightBlue)" : "#fff" };
     color: ${ props => props.filled ? "#fff" : "var(--lightBlue)" };
     opacity: ${ props => props.isLoading ? "0.8" : "1" };
-    border-radius: 3px;
+    border-radius: 5px;
 
-    svg {
+    .loadingIco {
         display: ${ props => props.isLoading ? "unset" : "none" };
     }
 `

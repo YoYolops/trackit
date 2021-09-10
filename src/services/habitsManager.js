@@ -46,7 +46,7 @@ async function markHabitAsDone(habitId, token) {
     return response.data;
 }
 
-async function markOffHabitAsDone() {
+async function markOffHabitAsDone(habitId, token) {
     const response = await API.post(`/habits/${habitId}/uncheck`, {}, head(token))
         .catch(() => false)
 

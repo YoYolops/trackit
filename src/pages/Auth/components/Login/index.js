@@ -41,7 +41,7 @@ function Login() {
             }}>
                 { 
                     isLoading 
-                        ? <Loader type="ThreeDots" color="#fff" height={20} /> 
+                        ? <Loader className="loadingIco" type="ThreeDots" color="#fff" height={20} /> 
                         : "Entrar"
                 }
             </Button>

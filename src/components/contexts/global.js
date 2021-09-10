@@ -14,8 +14,6 @@ export function GlobalProvider({ children }) {
             const userCredentials = JSON.parse(localStorage.getItem("trackit"));
 
             if(userCredentials) {
-                console.log("existe user data em local storage:")
-                console.log(userCredentials)
                 setUserData({...userCredentials});
                 setIsLogged(true);
             }
