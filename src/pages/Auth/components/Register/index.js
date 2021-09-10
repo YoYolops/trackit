@@ -1,16 +1,18 @@
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 import { Link } from 'react-router-dom';
+
 import logo from '../../../../assets/img/logo.png';
 import { Container } from '../style.js';
 import { Button } from '../../../../components/sharedStyles';
+import GlobalContext from '../../../../components/contexts/globalContext';
 
 function Register() {
+    const { register } = useContext(GlobalContext);
     const [ isLoading, setIsLoading ] = useState(false);
-
     const [ email, setEmail ] = useState("");
     const [ password, setPassword ] = useState("");
-    const [ nome, setNome ] = useState("");
-    const [ foto, setFoto ] = useState("");
+    const [ name, setName ] = useState("");
+    const [ picture, setPicture ] = useState("");
 
     return (
         <Container>
@@ -33,18 +35,25 @@ function Register() {
             <input
                 placeholder="nome"
                 type="text"
-                value={nome}
-                onChange={e => { setNome(e.target.value) }}
+                value={name}
+                onChange={e => { setName(e.target.value) }}
                 required={true}
             />
             <input
                 placeholder="foto"
                 type="text"
-                value={foto}
-                onChange={e => { setFoto(e.target.value) }}
+                value={picture}
+                onChange={e => { setPicture(e.target.value) }}
                 required={true}
             />
-            <Button filled={true} isLoading={isLoading}>
+            <Button filled={true} isLoading={isLoading} onClick={() => {
+                register({
+                    email,
+                    password,
+                    name,
+                    image: picture
+                })
+            }}>
                 { isLoading ? null : "Cadastrar" }
             </Button>
 

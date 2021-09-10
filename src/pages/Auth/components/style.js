@@ -17,7 +17,6 @@ export const Container = styled.div`
         height: 45px;
         width: 303px;
         outline: none;
-        color: var(--lightGrey);
         border: 2px solid var(--lightGrey);
         border-radius: 5px;
         margin-bottom: 10px;
