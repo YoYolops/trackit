@@ -1,10 +1,11 @@
 import { useState, useContext } from 'react';
 import { Link } from 'react-router-dom';
+import Loader from "react-loader-spinner";
 
 import logo from '../../../../assets/img/logo.png';
 import { Container } from '../style.js';
 import { Button } from '../../../../components/sharedStyles';
-import GlobalContext from '../../../../components/contexts/globalContext';
+import GlobalContext from '../../../../components/contexts/global';
 
 function Register() {
     const { register } = useContext(GlobalContext);
@@ -24,6 +25,7 @@ function Register() {
                 value={email}
                 onChange={e => { setEmail(e.target.value) }}
                 required={true}
+                disabled={isLoading}
             />
             <input
                 placeholder="password"
@@ -31,6 +33,7 @@ function Register() {
                 value={password}
                 onChange={e => { setPassword(e.target.value) }}
                 required={true}
+                disabled={isLoading}
             />
             <input
                 placeholder="nome"
@@ -38,6 +41,7 @@ function Register() {
                 value={name}
                 onChange={e => { setName(e.target.value) }}
                 required={true}
+                disabled={isLoading}
             />
             <input
                 placeholder="foto"
@@ -45,8 +49,10 @@ function Register() {
                 value={picture}
                 onChange={e => { setPicture(e.target.value) }}
                 required={true}
+                disabled={isLoading}
             />
-            <Button filled={true} isLoading={isLoading} onClick={() => {
+            <Button disabled={isLoading} filled={true} isLoading={isLoading} onClick={() => {
+                setIsLoading(!isLoading);
                 register({
                     email,
                     password,
@@ -54,7 +60,11 @@ function Register() {
                     image: picture
                 })
             }}>
-                { isLoading ? null : "Cadastrar" }
+                { 
+                    isLoading 
+                        ? <Loader type="ThreeDots" color="#fff" height={20} /> 
+                        : "Entrar"
+                }
             </Button>
 
             <Link to="/auth/login">Já tem uma conta? Faça login!</Link>

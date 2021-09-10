@@ -3,7 +3,7 @@ import { useContext, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import ResetCss from './components/sharedStyles/Reset';
 
-import GlobalContext from './components/contexts/globalContext';
+import GlobalContext from './components/contexts/global';
 import Auth from './pages/Auth';
 import Main from './pages/Main';
 

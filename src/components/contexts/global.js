@@ -9,6 +9,7 @@ export function GlobalProvider({ children }) {
     const [ userData, setUserData ] = useState();
 
     useEffect(() => {
+        console.log("context useEffect")
         function loadUserCredentials() {
             const userCredentials = JSON.parse(localStorage.getItem("trackit"));
 
@@ -51,7 +52,9 @@ export function GlobalProvider({ children }) {
         if(response) {
             setIsLogged(true);
             setUserData(response);
-            saveUserDataLocally(response);
+            window.location.href = "/"
+        } else {
+            alert("Desculpe, tivemos um problema...")
         }
     }
 

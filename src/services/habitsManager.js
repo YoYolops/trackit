@@ -9,28 +9,28 @@ function head(token) {
     return head;
 }
 
-export async function createHabit(data, token) {
+async function createHabit(data, token) {
     const response = API.post("/habits", data, head(token)).catch(() => false)
 
     if(response === false) return false;
     return response.data;
 }
 
-export async function listHabits(token) {
+async function listHabits(token) {
     const response = await API.get("/habits", head(token)).catch(() => false)
 
     if (response === false) return false;
     return response.data;
 }
 
-export async function deleteHabit(habitId, token) {
+async function deleteHabit(habitId, token) {
     const response = await API.delete(`/habits/${habitId}`, head(token)).catch(() => false)
 
     if(response === false) return false;
     return response.data;
 }
 
-export async function searchTodayHabits(token) {
+async function searchTodayHabits(token) {
     const response = await API.get("/habits/today", head(token))
         .catch(() => false)
 
@@ -38,7 +38,7 @@ export async function searchTodayHabits(token) {
     return response.data;
 }
 
-export async function markHabitAsDone(habitId, token) {
+async function markHabitAsDone(habitId, token) {
     const response = await API.post(`/habits/${habitId}/check`, {}, head(token))
         .catch(() => false)
     
@@ -46,10 +46,21 @@ export async function markHabitAsDone(habitId, token) {
     return response.data;
 }
 
-export async function markOffHabitAsDone() {
+async function markOffHabitAsDone() {
     const response = await API.post(`/habits/${habitId}/uncheck`, {}, head(token))
         .catch(() => false)
 
     if(response === false) return false;
     return response.data;
 }
+
+const Habits = {
+    listHabits,
+    createHabit,
+    deleteHabit,
+    searchTodayHabits,
+    markHabitAsDone,
+    markOffHabitAsDone
+}
+
+export default Habits;
