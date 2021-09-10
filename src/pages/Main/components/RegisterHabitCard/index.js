@@ -1,6 +1,7 @@
 import { useState } from 'react';
 
 import { CardContainer } from './style';
+import DaySelector from '../../../../components/DaySelector';
 
 function RegisterHabitCard() {
     const weekDays = [ "D", "S", "T", "Q", "Q", "S", "S" ]
@@ -26,7 +27,7 @@ function RegisterHabitCard() {
 
             <div className="weekdays">
                 {
-                    weekDays.map(day => <p>{day}</p>)
+                    weekDays.map(day => <DaySelector text={day} />)
                 }
             </div>
         </CardContainer>
