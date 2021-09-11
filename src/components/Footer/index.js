@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom';
+
 import { MainContainer, BottomBar } from './style';
 import { CircularProgressbar, buildStyles } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
@@ -5,6 +7,10 @@ import 'react-circular-progressbar/dist/styles.css';
 function Footer({ percentage }) {
     return (
         <MainContainer>
+            <BottomBar>
+                <Link to="/">Hábitos</Link>
+                <Link to="/">Histórico</Link>
+            </BottomBar>
             <CircularProgressbar
                 className="progressButton"
                 value={percentage}
@@ -20,9 +26,6 @@ function Footer({ percentage }) {
                     pathColor: "#fff"
                 })}
             />
-            <BottomBar>
-                
-            </BottomBar>
         </MainContainer>
     )
 }

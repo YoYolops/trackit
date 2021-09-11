@@ -7,6 +7,7 @@ const GlobalContext = createContext({});
 export function GlobalProvider({ children }) {
     const [ isLogged, setIsLogged ] = useState(false);
     const [ userData, setUserData ] = useState();
+    const [ isLoading, setIsLoading ] = useState(false);
 
     useEffect(() => {
         console.log("context useEffect")
@@ -22,7 +23,7 @@ export function GlobalProvider({ children }) {
     }, [])
 
     async function login(data) {
-        console.log("context login")
+        setIsLoading(true)
         const isValidEmail = validator.validate(data.email);
         
         if(!isValidEmail) {
@@ -35,6 +36,7 @@ export function GlobalProvider({ children }) {
             setUserData(response);
             saveUserDataLocally(response);
         }
+        setIsLoading(false)
     }
 
     async function register(data) {

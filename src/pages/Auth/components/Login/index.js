@@ -1,5 +1,6 @@
 import { useState, useContext } from 'react';
 import { Link } from 'react-router-dom';
+import { Redirect } from 'react-router'
 import Loader from "react-loader-spinner";
 
 import logo from '../../../../assets/img/logo.png';
@@ -8,10 +9,11 @@ import { Button } from '../../../../components/sharedStyles';
 import GlobalContext from '../../../../components/contexts/global';
 
 function Login() {
-    const [ isLoading, setIsLoading ] = useState(false);
     const [ email, setEmail ] = useState("");
     const [ password, setPassword ] = useState("");
-    const { login } = useContext(GlobalContext);
+    const { login, isLoading, userData } = useContext(GlobalContext);
+
+    if(userData) return <Redirect to="/main/habits" />
 
     return (
         <Container>
@@ -33,7 +35,6 @@ function Login() {
                 disabled={isLoading}
             />
             <Button disabled={isLoading} filled={true} isLoading={isLoading} onClick={() => {
-                setIsLoading(!isLoading)
                 login({
                     email,
                     password

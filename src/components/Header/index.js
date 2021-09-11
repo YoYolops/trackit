@@ -5,7 +5,7 @@ function Header({profilePic}) {
 
     return (
         <HeaderContainer>
-            <p>TackIt</p>
+            <p>TrackIt</p>
             <img src={profilePic}/>
         </HeaderContainer>
     )

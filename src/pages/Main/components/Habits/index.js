@@ -14,7 +14,7 @@ import MyHabitCard from '../MyHabitCard';
 function HabitsView() {
     const { userData } = useContext(GlobalContext);
 
-    const [ isLoading, setIsLoading ] = useState(false);
+    const [ isLoading, setIsLoading ] = useState(true);
     const [ userHabits, setUserHabits ] = useState([]);
     const [ showRegisterHabitCard, setShowRegisterHabitCard ] = useState(false);
     const [ habitData, setHabitData ] = useState({
@@ -24,10 +24,10 @@ function HabitsView() {
 
 
     useEffect(() => {
-        console.log("useEffect habits")
         async function getHabits() {
             const loadedHabits = await Habits.listHabits(userData.token);
             setUserHabits(loadedHabits);
+            setIsLoading(false)
         }
         if(userData) getHabits();
     }, [userData, isLoading]) //isLoading ensures the re-render after habit registration
@@ -52,15 +52,13 @@ function HabitsView() {
 
 
     async function removeHabit(ID) {
-        console.log("removing")
         setIsLoading(true)
         const response = await Habits.deleteHabit(ID, userData.token);
-        console.log(response)
         if(!response) alert("Desculpe, nossos servidores estão de férias")
         setIsLoading(false)
     }
     
-    if(!userData) return <Loading />
+    if(!userData || isLoading) return <Loading />
 
     return (
         <>

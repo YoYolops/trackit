@@ -18,4 +18,21 @@ export const MainContainer = styled.div`
     }
 `
 
-export const BottomBar = styled.div``
+export const BottomBar = styled.div`
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0px 20px;
+    width: 100%;
+    height: 70px;
+    background-color: #fff;
+    position: absolute;
+    bottom: 0;
+
+    a {
+        color: var(--lightBlue);
+        font-size: 16px;
+        border: none;
+        text-decoration: none;
+    }
+`
