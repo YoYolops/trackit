@@ -1,10 +1,12 @@
 import { useState, useEffect, createContext } from 'react';
 import validator from 'email-validator';
 import Auth from '../../services/auth';
+import { useHistory } from 'react-router';
 
 const GlobalContext = createContext({});
 
 export function GlobalProvider({ children }) {
+    const history = useHistory();
     const [ isLogged, setIsLogged ] = useState(false);
     const [ userData, setUserData ] = useState();
     const [ isLoading, setIsLoading ] = useState(false);
@@ -52,7 +54,7 @@ export function GlobalProvider({ children }) {
         if(response) {
             setIsLogged(true);
             setUserData(response);
-            window.location.href = "/"
+            history.location.pathname = "/"
         } else {
             alert("Desculpe, tivemos um problema...")
         }

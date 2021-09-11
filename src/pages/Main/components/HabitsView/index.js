@@ -27,7 +27,7 @@ function HabitsView() {
         async function getHabits() {
             const loadedHabits = await Habits.listHabits(userData.token);
             setUserHabits(loadedHabits);
-            setIsLoading(false)
+            setIsLoading(false);
         }
         if(userData) getHabits();
     }, [userData, isLoading]) //isLoading ensures the re-render after habit registration
@@ -58,7 +58,7 @@ function HabitsView() {
         setIsLoading(false)
     }
     
-    if(!userData || isLoading) return <Loading />
+    if(!userData) return <Loading />
 
     return (
         <>

@@ -23,9 +23,8 @@ function DaySelector({selected,
     }
 
     return (
-        <DaySelectorContainer disabled={frozen ?? false}
-                              filled={isSelected}
-                              onClick={clickHandler}
+        <DaySelectorContainer filled={isSelected}
+                              onClick={frozen ? () => {} : clickHandler}
         >
             <p>{text}</p>
         </DaySelectorContainer>

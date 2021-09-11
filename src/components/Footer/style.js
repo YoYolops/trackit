@@ -28,6 +28,7 @@ export const BottomBar = styled.div`
     background-color: #fff;
     position: absolute;
     bottom: 0;
+    font-family: 'Lexend Deca', sans-serif;
 
     a {
         color: var(--lightBlue);

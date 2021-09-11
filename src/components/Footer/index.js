@@ -8,8 +8,8 @@ function Footer({ percentage }) {
     return (
         <MainContainer>
             <BottomBar>
-                <Link to="/">Hábitos</Link>
-                <Link to="/">Histórico</Link>
+                <Link to="/main/habits">Hábitos</Link>
+                <Link to="/main/today">Histórico</Link>
             </BottomBar>
             <CircularProgressbar
                 className="progressButton"
