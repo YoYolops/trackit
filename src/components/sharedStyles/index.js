@@ -7,6 +7,7 @@ export const Button = styled.button`
     color: ${ props => props.filled ? "#fff" : "var(--lightBlue)" };
     opacity: ${ props => props.isLoading ? "0.8" : "1" };
     border-radius: 5px;
+    font-weight: bolder;
 
     .loadingIco {
         display: ${ props => props.isLoading ? "unset" : "none" };

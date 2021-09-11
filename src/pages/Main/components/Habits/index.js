@@ -16,6 +16,10 @@ function HabitsView() {
     const [ isLoading, setIsLoading ] = useState(false);
     const [ userHabits, setUserHabits ] = useState([]);
     const [ showRegisterHabitCard, setShowRegisterHabitCard ] = useState(false);
+    const [ habitData, setHabitData ] = useState({
+        name: "",
+        days: []
+    });
 
     useEffect(() => {
         async function getHabits() {
@@ -45,7 +49,8 @@ function HabitsView() {
                 </AddHabitMenu>
                 {
                     showRegisterHabitCard
-                        ? <RegisterHabitCard />
+                        ? <RegisterHabitCard habitData={habitData}
+                                             setHabitData={setHabitData}/>
                         : null
                 }
 
