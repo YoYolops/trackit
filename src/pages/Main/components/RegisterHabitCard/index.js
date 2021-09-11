@@ -1,10 +1,13 @@
-import { useState } from 'react';
-
 import { CardContainer, ButtonContainer } from './style';
 import { Button } from '../../../../components/sharedStyles/index';
 import DaySelector from '../../../../components/DaySelector';
 
-function RegisterHabitCard({ closeCard, habitData, setHabitData }) {
+function RegisterHabitCard({ closeCard,
+                             habitData,
+                             setHabitData,
+                             sendNewHabit })
+
+{
     const weekDays = [ "D", "S", "T", "Q", "Q", "S", "S" ];
     const numericWeekDays = [ 7, 1, 2, 3, 4, 5, 6 ];
 
@@ -62,12 +65,14 @@ function RegisterHabitCard({ closeCard, habitData, setHabitData }) {
                     width="84px"
                     height="35px"
                     filled={false}
+                    onClick={() => { closeCard(false) }}
                 >Cancelar</Button>
 
                 <Button
                     width="84px"
                     height="35px"
                     filled={true}
+                    onClick={sendNewHabit}
                 >Salvar</Button>
             </ButtonContainer>
         </CardContainer>

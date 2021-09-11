@@ -10,7 +10,7 @@ function head(token) {
 }
 
 async function createHabit(data, token) {
-    const response = API.post("/habits", data, head(token)).catch(() => false)
+    const response = await API.post("/habits", data, head(token)).catch(() => false)
 
     if(response === false) return false;
     return response.data;
@@ -27,7 +27,7 @@ async function deleteHabit(habitId, token) {
     const response = await API.delete(`/habits/${habitId}`, head(token)).catch(() => false)
 
     if(response === false) return false;
-    return response.data;
+    return true;
 }
 
 async function searchTodayHabits(token) {

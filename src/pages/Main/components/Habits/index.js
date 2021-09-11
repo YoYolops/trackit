@@ -9,6 +9,7 @@ import { AddHabitMenu, MainContentContainer } from './style.js';
 import Loading from '../../../../components/Loading';
 import Habits from '../../../../services/habitsManager';
 import RegisterHabitCard from '../RegisterHabitCard';
+import MyHabitCard from '../MyHabitCard';
 
 function HabitsView() {
     const { userData } = useContext(GlobalContext);
@@ -21,28 +22,56 @@ function HabitsView() {
         days: []
     });
 
+
     useEffect(() => {
+        console.log("useEffect habits")
         async function getHabits() {
             const loadedHabits = await Habits.listHabits(userData.token);
             setUserHabits(loadedHabits);
         }
         if(userData) getHabits();
-    }, [userData])
+    }, [userData, isLoading]) //isLoading ensures the re-render after habit registration
+
+
+    async function sendNewHabit() {
+        setIsLoading(true);
+
+        if(habitData.name.trim() === "" || habitData.days.length === 0) {
+            alert("Você precisa inserir dados válidos")
+        } else {
+            const response = await Habits.createHabit(habitData, userData.token);
+            if(!response) alert("Desculpe, tivemos um problema :(")
+        }
+        setIsLoading(false);
+        setHabitData({
+            name: "",
+            days: []
+        })
+        setShowRegisterHabitCard(false)
+    }
+
+
+    async function removeHabit(ID) {
+        console.log("removing")
+        setIsLoading(true)
+        const response = await Habits.deleteHabit(ID, userData.token);
+        console.log(response)
+        if(!response) alert("Desculpe, nossos servidores estão de férias")
+        setIsLoading(false)
+    }
     
     if(!userData) return <Loading />
 
     return (
         <>
-            <Header profilePic={userData.image} />
             <MainContentContainer>
                 <AddHabitMenu>
                     <SectionTitle>Meus Hábitos</SectionTitle>
-                    <Button
-                        filled={true}
-                        width="40px"
-                        height="35px"
-                        isLoading={isLoading}
-                        onClick={() => {setShowRegisterHabitCard(!showRegisterHabitCard)}}
+                    <Button filled={true}
+                            width="40px"
+                            height="35px"
+                            isLoading={isLoading}
+                            onClick={() => {setShowRegisterHabitCard(!showRegisterHabitCard)}}
                     >
                         <FaPlus color="#fff" size={20} />
                     </Button>
@@ -50,12 +79,18 @@ function HabitsView() {
                 {
                     showRegisterHabitCard
                         ? <RegisterHabitCard habitData={habitData}
-                                             setHabitData={setHabitData}/>
+                                             setHabitData={setHabitData}
+                                             closeCard={setShowRegisterHabitCard}
+                                             sendNewHabit={sendNewHabit}/>
                         : null
                 }
 
                 {
-                    userHabits.map(() => <p>oi</p>)
+                    userHabits.map(item => (
+                        <MyHabitCard habitData={item}
+                                     removeHabit={removeHabit}
+                                     key={item.id}/>
+                    ))
                 }
 
                 {
@@ -65,6 +100,7 @@ function HabitsView() {
                 }
             </MainContentContainer>
             <Footer percentage={30} />
+            <Header profilePic={userData.image} />
         </>
     )
 }
