@@ -9,13 +9,16 @@ function MyHabitCard({ habitData, removeHabit }) {
     const weekDays = [ "D", "S", "T", "Q", "Q", "S", "S" ];
     const habitID = habitData.id;
 
-
+    function removalHandler() {
+        const agreed = window.confirm(`Tem certeza que quer excluir ${habitData.name}?`)
+        if(agreed) removeHabit(habitID);
+    }
 
     return (
         <MyHabitCardContainer>
             <BiTrash size={20}
                      color="#666666"
-                     onClick={() => {removeHabit(habitID)}}
+                     onClick={() => {removalHandler()}}
             />
 
             <HabitTitle>{habitData.name}</HabitTitle>

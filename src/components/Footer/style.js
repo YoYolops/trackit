@@ -18,6 +18,10 @@ export const MainContainer = styled.div`
     }
 `
 
+export const CentralButtonContainer = styled.div`
+    border: 2px solid blue;
+`
+
 export const BottomBar = styled.div`
     display: flex;
     justify-content: space-between;

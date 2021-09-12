@@ -24,13 +24,13 @@ function TodayHabitCard({ isChecked,
         console.log("id: ", ID)
 
         if(isClicked) {
-            response = Habits.markOffHabitAsDone(ID, userData.token);
+            response = await Habits.markOffHabitAsDone(ID, userData.token);
             if(response) {
                 setUpdatedStreak(updatedStreak - 1);
                 updateDoneAmmount("decrease")
             }
         } else {
-            response = Habits.markHabitAsDone(ID, userData.token);
+            response = await Habits.markHabitAsDone(ID, userData.token);
             if(response) {
                 setUpdatedStreak(updatedStreak + 1);
                 updateDoneAmmount("increase");
@@ -54,7 +54,7 @@ function TodayHabitCard({ isChecked,
                 </p>
 
                 <p className="info">
-                    Seu recorde: <Span color={record < updatedStreak ? "#8FC549" : "#666666"}>{
+                    Seu recorde: <Span color={record <= updatedStreak ? "#8FC549" : "#666666"}>{
                                     `${record < updatedStreak ? updatedStreak : record} dias`
                                  }</Span>
                 </p>

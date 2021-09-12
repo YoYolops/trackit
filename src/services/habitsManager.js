@@ -41,8 +41,9 @@ async function searchTodayHabits(token) {
 async function markHabitAsDone(habitId, token) {
     const response = await API.post(`/habits/${habitId}/check`, {}, head(token))
         .catch(() => false)
-
+    
     if(response === false) return false;
+    else if(response.data === "") return true;
     return response.data;
 }
 
@@ -51,6 +52,7 @@ async function markOffHabitAsDone(habitId, token) {
         .catch(() => false)
 
     if(response === false) return false;
+    else if(response.data === "") return true
     return response.data;
 }
 
