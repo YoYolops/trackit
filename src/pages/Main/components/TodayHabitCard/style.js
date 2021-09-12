@@ -10,6 +10,7 @@ export const TodayHabitCardContainer = styled.div`
     border-radius: 5px;
     font-family: 'Lexend Deca', sans-serif;
     background-color: #fff;
+    margin-bottom: 10px;
 
     .info {
         font-size: 12px;

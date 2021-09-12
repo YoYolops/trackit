@@ -15,7 +15,6 @@ function Today() {
         "Domingo", "Segunda", "Terça", "Quarta",
         "Quinta", "Sexta", "Sábado"
     ]
-    console.log("userData: ",userData)
     const [ todaysHabits, setTodaysHabits ] = useState([]);
     const [ doneAmmount, setDoneAmmount ] = useState(0)
 
@@ -61,7 +60,11 @@ function Today() {
         <>
             <MainContentContainer>
                 <SectionTitle>{ generateDate() }</SectionTitle>
-                <SectionSubTitle></SectionSubTitle>
+                <SectionSubTitle color={doneAmmount === 0 ? null : "#8FC549"}>{
+                    doneAmmount === 0
+                        ? "Nenhum hábito concluído ainda"
+                        : `${parseInt((100/todaysHabits.length)*doneAmmount)}% dos hábitos concluídos`
+                }</SectionSubTitle>
                 
                 {
                     todaysHabits.map(habit => {

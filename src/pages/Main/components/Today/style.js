@@ -5,4 +5,5 @@ export const SectionSubTitle = styled.p`
     font-size: 18px;
     color: ${props => props.color || "#bababa"};
     margin-bottom: 20px;
+    margin-top: 10px;
 `
