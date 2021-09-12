@@ -5,7 +5,8 @@ import Header from '../../../../components/Header';
 import Footer from '../../../../components/Footer';
 import GlobalContext from '../../../../components/contexts/global';
 import { SectionTitle, Button } from '../../../../components/sharedStyles';
-import { AddHabitMenu, MainContentContainer } from './style.js';
+import { AddHabitMenu } from './style.js';
+import { MainContentContainer } from '../SharedStyles';
 import Loading from '../../../../components/Loading';
 import Habits from '../../../../services/habitsManager';
 import RegisterHabitCard from '../RegisterHabitCard';
@@ -22,14 +23,17 @@ function HabitsView() {
         days: []
     });
 
-
     useEffect(() => {
+        let unmounted = false;
+
         async function getHabits() {
             const loadedHabits = await Habits.listHabits(userData.token);
-            setUserHabits(loadedHabits);
-            setIsLoading(false);
+            if(!unmounted) setUserHabits(loadedHabits);
+            if(isLoading && !unmounted) setIsLoading(false)
         }
-        if(userData) getHabits();
+        if(userData && !unmounted) getHabits();
+
+        return () => { unmounted = true }
     }, [userData, isLoading]) //isLoading ensures the re-render after habit registration
 
 
@@ -39,6 +43,7 @@ function HabitsView() {
         if(habitData.name.trim() === "" || habitData.days.length === 0) {
             alert("Você precisa inserir dados válidos")
         } else {
+            console.log("habitData:", habitData);
             const response = await Habits.createHabit(habitData, userData.token);
             if(!response) alert("Desculpe, tivemos um problema :(")
         }

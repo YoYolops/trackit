@@ -65,12 +65,19 @@ export function GlobalProvider({ children }) {
         localStorage.setItem("trackit", trackit);
     }
 
+    function restartApp() {
+        localStorage.removeItem("trackit");
+        setIsLogged(false);
+        setUserData();
+    }
+
     return (
         <GlobalContext.Provider value={{
             isLogged,
             userData,
             login,
-            register
+            register,
+            restartApp
         }}>
             { children }
         </GlobalContext.Provider>

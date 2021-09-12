@@ -9,16 +9,10 @@ function RegisterHabitCard({ closeCard,
 
 {
     const weekDays = [ "D", "S", "T", "Q", "Q", "S", "S" ];
-    const numericWeekDays = [ 7, 1, 2, 3, 4, 5, 6 ];
-
-
-
-    console.log(habitData)
 
     function addWeekDay(day) {
         const newDays = Array.from(habitData.days);
         newDays.push(day);
-        console.log("trully adding")
         setHabitData({
             name: habitData.name,
             days: newDays
@@ -27,7 +21,6 @@ function RegisterHabitCard({ closeCard,
 
     function removeWeekDay(day) {
         const newDays = habitData.days.filter(value => value !== day);
-        console.log("trully removing")
         setHabitData({
             name: habitData.name,
             days: Array.from(newDays)
@@ -52,9 +45,9 @@ function RegisterHabitCard({ closeCard,
                             text={day}
                             addWeekDay={addWeekDay}
                             removeWeekDay={removeWeekDay}
-                            thisWeekDay={numericWeekDays[index]}
+                            thisWeekDay={index}
                             key={index}
-                            selected={habitData.days.includes(numericWeekDays[index])}
+                            selected={habitData.days.includes(index)}
                         />
                     ))
                 }

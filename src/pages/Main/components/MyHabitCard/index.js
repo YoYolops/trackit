@@ -7,7 +7,6 @@ import { MyHabitCardContainer,
 
 function MyHabitCard({ habitData, removeHabit }) {
     const weekDays = [ "D", "S", "T", "Q", "Q", "S", "S" ];
-    const numericWeekDays = [ 7, 1, 2, 3, 4, 5, 6 ];
     const habitID = habitData.id;
 
 
@@ -28,9 +27,8 @@ function MyHabitCard({ habitData, removeHabit }) {
                                      text={day}
                                      addWeekDay={() => {}}
                                      removeWeekDay={() => {}}
-                                     thisWeekDay={numericWeekDays[index]}
-                                     key={index}
-                                     selected={habitData.days.includes(numericWeekDays[index])}
+                                     thisWeekDay={index}
+                                     selected={habitData.days.includes(index)}
                                      frozen={true}
                         />
                     ))
