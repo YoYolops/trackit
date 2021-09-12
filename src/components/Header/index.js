@@ -6,7 +6,7 @@ function Header({profilePic}) {
     return (
         <HeaderContainer>
             <p>TrackIt</p>
-            <img src={profilePic}/>
+            <img src={profilePic} alt="profile" />
         </HeaderContainer>
     )
 }

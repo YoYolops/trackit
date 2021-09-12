@@ -7,6 +7,7 @@ import { SectionTitle } from '../../../../components/sharedStyles';
 import { MainContentContainer } from '../SharedStyles';
 import { SectionSubTitle } from './style.js';
 import Habits from '../../../../services/habitsManager';
+import TodayHabitCard from '../TodayHabitCard';
 
 function Today() {
     const { userData } = useContext(GlobalContext);
@@ -16,13 +17,22 @@ function Today() {
     ]
     console.log("userData: ",userData)
     const [ todaysHabits, setTodaysHabits ] = useState([]);
+    const [ doneAmmount, setDoneAmmount ] = useState(0)
 
     useEffect(() => {
         let unmounted = false;
 
         async function getTodaysHabits() {
             const response = await Habits.searchTodayHabits(userData.token);
-            if(!unmounted && response) setTodaysHabits(response);
+            if(!unmounted && response) {
+                let done = 0;
+                for(const habit of response) { 
+                    if(habit.done) done += 1;
+                } 
+                console.log(done)
+                setDoneAmmount(done);
+                setTodaysHabits(response);
+            }
         }
         if(!unmounted && userData) getTodaysHabits();
 
@@ -42,14 +52,33 @@ function Today() {
         return `${weekDay}, ${monthDay}/${month}`
     }
 
+    function updateDoneAmmount(operation) {
+        if(operation === "increase") setDoneAmmount(doneAmmount + 1);
+        else setDoneAmmount(doneAmmount - 1);
+    }
+
     return (
         <>
             <MainContentContainer>
                 <SectionTitle>{ generateDate() }</SectionTitle>
                 <SectionSubTitle></SectionSubTitle>
+                
+                {
+                    todaysHabits.map(habit => {
+                        return (
+                            <TodayHabitCard key={habit.id}
+                                            title={habit.name}
+                                            isChecked={habit.done}
+                                            streak={habit.currentSequence}
+                                            record={habit.highestSequence}
+                                            ID={habit.id}
+                                            updateDoneAmmount={updateDoneAmmount}/>
+                        )
+                    })
+                }
             </MainContentContainer>
             <Header profilePic={userData?.image}/>
-            <Footer />
+            <Footer percentage={(100/todaysHabits.length)*doneAmmount} />
         </>
     )
 }
