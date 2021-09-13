@@ -1,16 +1,18 @@
 import { useContext, useState, useEffect } from 'react';
 import { FaPlus } from 'react-icons/fa';
 
+import GlobalContext from '../../../../components/contexts/global';
+import Habits from '../../../../services/habitsManager';
+
 import Header from '../../../../components/Header';
 import Footer from '../../../../components/Footer';
-import GlobalContext from '../../../../components/contexts/global';
+import Loading from '../../../../components/Loading';
+import RegisterHabitCard from '../RegisterHabitCard';
+import MyHabitCard from '../MyHabitCard';
+
 import { SectionTitle, Button } from '../../../../components/sharedStyles';
 import { AddHabitMenu } from './style.js';
 import { MainContentContainer } from '../SharedStyles';
-import Loading from '../../../../components/Loading';
-import Habits from '../../../../services/habitsManager';
-import RegisterHabitCard from '../RegisterHabitCard';
-import MyHabitCard from '../MyHabitCard';
 
 function HabitsView() {
     const { userData } = useContext(GlobalContext);
@@ -28,7 +30,8 @@ function HabitsView() {
 
         async function getHabits() {
             const loadedHabits = await Habits.listHabits(userData.token);
-            if(!unmounted) setUserHabits(loadedHabits);
+            if(!unmounted && loadedHabits) setUserHabits(loadedHabits);
+            else if(!loadedHabits) alert("Desculpe, nossos bits estão pausador pro lanche")
             if(isLoading && !unmounted) setIsLoading(false)
         }
         if(userData && !unmounted) getHabits();

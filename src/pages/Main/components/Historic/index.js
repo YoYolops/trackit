@@ -1,11 +1,12 @@
 import { useContext, useEffect } from 'react';
 
-import { SectionTitle } from '../../../../components/sharedStyles/index';
-import { MainContentContainer } from '../SharedStyles';
 import GlobalContext from '../../../../components/contexts/global';
 import Footer from '../../../../components/Footer';
 import Header from '../../../../components/Header';
 import Loading from '../../../../components/Loading';
+
+import { SectionTitle } from '../../../../components/sharedStyles/index';
+import { MainContentContainer } from '../SharedStyles';
 
 function Historic() {
     const { userData } = useContext(GlobalContext);

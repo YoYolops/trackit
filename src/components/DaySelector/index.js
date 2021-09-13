@@ -13,10 +13,8 @@ function DaySelector({selected,
 
     function clickHandler() {
         if(!isSelected) {
-            console.log("adicionando ", thisWeekDay)
             addWeekDay(thisWeekDay)
         } else {
-            console.log("removendo ", thisWeekDay)
             removeWeekDay(thisWeekDay)
         }
         setIsSelected(!isSelected);

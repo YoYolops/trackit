@@ -1,6 +1,6 @@
+import { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { useHistory } from 'react-router';
-import { useContext } from 'react';
 
 import HabitsContext from '../contexts/habits';
 import { MainContainer, BottomBar, CentralButtonContainer } from './style';

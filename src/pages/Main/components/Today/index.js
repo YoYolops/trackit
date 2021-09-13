@@ -4,11 +4,12 @@ import GlobalContext from '../../../../components/contexts/global';
 import HabitsContext from '../../../../components/contexts/habits';
 import Footer from '../../../../components/Footer';
 import Header from '../../../../components/Header';
+import TodayHabitCard from '../TodayHabitCard';
+import Loading from '../../../../components/Loading';
+
 import { SectionTitle } from '../../../../components/sharedStyles';
 import { MainContentContainer } from '../SharedStyles';
 import { SectionSubTitle } from './style.js';
-import TodayHabitCard from '../TodayHabitCard';
-import Loading from '../../../../components/Loading';
 
 function Today() {
     const { userData } = useContext(GlobalContext);

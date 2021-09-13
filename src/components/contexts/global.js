@@ -1,5 +1,6 @@
 import { useState, useEffect, createContext } from 'react';
 import validator from 'email-validator';
+
 import Auth from '../../services/auth';
 
 const GlobalContext = createContext({});

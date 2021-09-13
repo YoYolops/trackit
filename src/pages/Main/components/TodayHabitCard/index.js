@@ -1,12 +1,13 @@
 import { useContext, useState } from 'react';
+import { AiFillCheckSquare } from 'react-icons/ai';
+
+import Habits from '../../../../services/habitsManager';
+import GlobalContext from '../../../../components/contexts/global';
+import HabitsContext from '../../../../components/contexts/habits';
 
 import { TodayHabitCardContainer,
          TodayHabitCardTitle,
          Span } from './style';
-import { AiFillCheckSquare } from 'react-icons/ai';
-import Habits from '../../../../services/habitsManager';
-import GlobalContext from '../../../../components/contexts/global';
-import HabitsContext from '../../../../components/contexts/habits';
 
 function TodayHabitCard({ isChecked,
                           title,
