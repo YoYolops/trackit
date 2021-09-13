@@ -14,7 +14,7 @@ function Login() {
     const { login, isLoading, userData } = useContext(GlobalContext);
 
     if(userData) return <Redirect to="/main/today" />
-    console.log("is loading: ", isLoading)
+
     return (
         <Container>
             <img src={logo} alt=""/>

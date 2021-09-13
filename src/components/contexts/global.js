@@ -11,7 +11,6 @@ export function GlobalProvider({ children }) {
     const [ isLoading, setIsLoading ] = useState(false); // used to refresh app when server data is modified
 
     useEffect(() => {
-        console.log("global context useEffect")
         function loadUserCredentials() {
             const userCredentials = JSON.parse(localStorage.getItem("trackit"));
 
@@ -45,7 +44,6 @@ export function GlobalProvider({ children }) {
 
     async function register(data) {
         setIsLoading(true);
-        console.log("context register")
         const isValidEmail = validator.validate(data.email);
 
         if(!isValidEmail) {

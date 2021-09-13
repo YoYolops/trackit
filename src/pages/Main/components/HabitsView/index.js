@@ -47,7 +47,6 @@ function HabitsView() {
         if(habitData.name.trim() === "" || habitData.days.length === 0) {
             alert("Você precisa inserir dados válidos")
         } else {
-            console.log("habitData:", habitData);
             const response = await Habits.createHabit(habitData, userData.token);
             if(!response) alert("Desculpe, tivemos um problema :(")
         }

@@ -45,7 +45,6 @@ export function HabitsProvider({ children }) {
                 }
                 setDoneAmmount(done);
                 setTodaysHabits(response);
-                console.log("updating Done percentage")
                 setDonePercentage(parseInt((100/response.length)*done));
             }
         }
