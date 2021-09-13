@@ -23,7 +23,7 @@ function Today() {
 
     useEffect(() => {
         updateHabitsData();
-    }, [])
+    }, [updateHabitsData])
 
     useEffect(() => {
         if(!userData) window.location.href = "/";
