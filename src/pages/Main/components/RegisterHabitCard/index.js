@@ -76,7 +76,10 @@ function RegisterHabitCard({ closeCard,
                     isLoading={isLoading}
                 >{
                     isLoading
-                        ? <Loader className="loadingIco" type="ThreeDots" color="#ffffff" height={10}  />
+                        ? <Loader className="loadingIco"
+                                  type="ThreeDots"
+                                  color="#ffffff"
+                                  height={10}  />
                         : "Salvar"
                 }</Button>
             </ButtonContainer>

@@ -8,8 +8,7 @@ import { Button } from '../../../../components/sharedStyles';
 import GlobalContext from '../../../../components/contexts/global';
 
 function Register() {
-    const { register } = useContext(GlobalContext);
-    const [ isLoading, setIsLoading ] = useState(false);
+    const { register, isLoading } = useContext(GlobalContext);
     const [ email, setEmail ] = useState("");
     const [ password, setPassword ] = useState("");
     const [ name, setName ] = useState("");
@@ -61,7 +60,7 @@ function Register() {
             }}>
                 { 
                     isLoading 
-                        ? <Loader className="loadingIco" type="ThreeDots" color="#fff" height={20} /> 
+                        ? <Loader className="loadingIco" type="ThreeDots" color="#fff" height={10} /> 
                         : "Cadastrar"
                 }
             </Button>

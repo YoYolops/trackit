@@ -1,12 +1,10 @@
 import { useState, useEffect, createContext } from 'react';
 import validator from 'email-validator';
 import Auth from '../../services/auth';
-import { useHistory } from 'react-router';
 
 const GlobalContext = createContext({});
 
 export function GlobalProvider({ children }) {
-    const history = useHistory();
     const [ isLogged, setIsLogged ] = useState(false);
     const [ userData, setUserData ] = useState();
     const [ isLoading, setIsLoading ] = useState(false); // used to refresh app when server data is modified
