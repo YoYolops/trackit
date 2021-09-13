@@ -31,7 +31,7 @@ function HabitsView() {
         async function getHabits() {
             const loadedHabits = await Habits.listHabits(userData.token);
             if(!unmounted && loadedHabits) setUserHabits(loadedHabits);
-            else if(!loadedHabits) alert("Desculpe, nossos bits estão pausador pro lanche")
+            else if(!loadedHabits) alert("Desculpe, nossos bits estão pausados pro lanche")
             if(isLoading && !unmounted) setIsLoading(false)
         }
         if(userData && !unmounted) getHabits();

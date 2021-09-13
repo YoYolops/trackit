@@ -35,7 +35,13 @@ export function GlobalProvider({ children }) {
         if(response) {
             setIsLogged(true);
             setUserData(response);
-            saveUserDataLocally(response);
+            saveUserDataLocally({ //Prevents the password of being stored
+                name: response.name,
+                email: response.email,
+                image: response.image,
+                token: response.token,
+                id: response.id
+            });
         } else {
             alert("Esses dados parecem estar errados...")
         }
