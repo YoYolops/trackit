@@ -13,7 +13,7 @@ function Login() {
     const [ password, setPassword ] = useState("");
     const { login, isLoading, userData } = useContext(GlobalContext);
 
-    if(userData) return <Redirect to="/main/habits" />
+    if(userData) return <Redirect to="/main/today" />
     console.log("is loading: ", isLoading)
     return (
         <Container>

@@ -12,7 +12,7 @@ function App() {
   const history = useHistory();
 
   useEffect(() => {
-    if(isLogged) history.push("/main/habits", userData);
+    if(isLogged) history.push("/main/today", userData);
   }, [isLogged, history, userData])
 
   return (

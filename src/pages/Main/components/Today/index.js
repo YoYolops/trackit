@@ -8,12 +8,12 @@ import { SectionTitle } from '../../../../components/sharedStyles';
 import { MainContentContainer } from '../SharedStyles';
 import { SectionSubTitle } from './style.js';
 import TodayHabitCard from '../TodayHabitCard';
+import Loading from '../../../../components/Loading';
 
 function Today() {
     const { userData } = useContext(GlobalContext);
     const { todaysHabits,
             doneAmmount,
-            setDoneAmmount,
             updateHabitsData } = useContext(HabitsContext);
     
     const dias = [
@@ -25,6 +25,10 @@ function Today() {
         updateHabitsData();
     }, [])
 
+    useEffect(() => {
+        if(!userData) window.location.href = "/";
+    }, [userData])
+
     function generateDate() {
         const date = new Date();
         const weekDay = dias[date.getDay()];
@@ -35,6 +39,8 @@ function Today() {
 
         return `${weekDay}, ${monthDay}/${month}`
     }
+
+    if(!userData) return <Loading />
 
     return (
         <>

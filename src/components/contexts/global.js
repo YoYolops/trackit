@@ -56,8 +56,7 @@ export function GlobalProvider({ children }) {
 
         const response = await Auth.register(data);
         if(response) {
-            login({ email:data.email, password: data.password })
-            /* window.location.href = "/"; */
+            window.location.href = "/";
 
         } else {
             alert("Desculpe, tivemos um problema...")
