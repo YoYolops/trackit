@@ -29,7 +29,7 @@ function Register() {
             />
             <input
                 placeholder="password"
-                type="text"
+                type="password"
                 value={password}
                 onChange={e => { setPassword(e.target.value) }}
                 required={true}
@@ -52,7 +52,6 @@ function Register() {
                 disabled={isLoading}
             />
             <Button disabled={isLoading} filled={true} isLoading={isLoading} onClick={() => {
-                setIsLoading(!isLoading);
                 register({
                     email,
                     password,
@@ -63,7 +62,7 @@ function Register() {
                 { 
                     isLoading 
                         ? <Loader className="loadingIco" type="ThreeDots" color="#fff" height={20} /> 
-                        : "Entrar"
+                        : "Cadastrar"
                 }
             </Button>
 

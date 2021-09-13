@@ -32,6 +32,7 @@ function HabitsView() {
             if(isLoading && !unmounted) setIsLoading(false)
         }
         if(userData && !unmounted) getHabits();
+        else if(!userData) window.location.href = "/";
 
         return () => { unmounted = true }
     }, [userData, isLoading]) //isLoading ensures the re-render after habit registration
@@ -103,7 +104,7 @@ function HabitsView() {
                 }
             </MainContentContainer>
             <Footer />
-            <Header profilePic={userData.image} />
+            <Header profilePic={userData?.image} />
         </>
     )
 }

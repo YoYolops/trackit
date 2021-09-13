@@ -14,7 +14,7 @@ function Login() {
     const { login, isLoading, userData } = useContext(GlobalContext);
 
     if(userData) return <Redirect to="/main/habits" />
-
+    console.log("is loading: ", isLoading)
     return (
         <Container>
             <img src={logo} alt=""/>
@@ -28,7 +28,7 @@ function Login() {
             />
             <input
                 placeholder="password"
-                type="text"
+                type="password"
                 value={password}
                 onChange={e => { setPassword(e.target.value) }}
                 required={true}
@@ -42,7 +42,7 @@ function Login() {
             }}>
                 { 
                     isLoading 
-                        ? <Loader className="loadingIco" type="ThreeDots" color="#fff" height={20} /> 
+                        ? <Loader className="loadingIco" type="ThreeDots" color="#fff" height={10} /> 
                         : "Entrar"
                 }
             </Button>
