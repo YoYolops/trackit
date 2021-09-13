@@ -39,13 +39,11 @@ function Login() {
                     email,
                     password
                 })
-            }}>
-                { 
+            }}>{ 
                     isLoading 
                         ? <Loader className="loadingIco" type="ThreeDots" color="#fff" height={10} /> 
                         : "Entrar"
-                }
-            </Button>
+            }</Button>
 
             <Link to="/auth/register">
                 Não tem uma conta? Cadastre-se

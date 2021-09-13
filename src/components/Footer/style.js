@@ -8,6 +8,7 @@ export const MainContainer = styled.div`
     bottom: 0;
     height: 110px;
     width: 100%;
+    
     .progressButton {
         font-family: 'Lexend Deca', sans-serif;
         width: 90px;

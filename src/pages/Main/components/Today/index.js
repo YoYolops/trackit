@@ -54,16 +54,12 @@ function Today() {
                 }</SectionSubTitle>
                 
                 {
-                    todaysHabits.map(habit => {
-                        return (
-                            <TodayHabitCard key={habit.id}
-                                            title={habit.name}
-                                            isChecked={habit.done}
-                                            streak={habit.currentSequence}
-                                            record={habit.highestSequence}
-                                            ID={habit.id} />
-                        )
-                    })
+                    todaysHabits.map(habit => <TodayHabitCard key={habit.id}
+                                                              title={habit.name}
+                                                              isChecked={habit.done}
+                                                              streak={habit.currentSequence}
+                                                              record={habit.highestSequence}
+                                                              ID={habit.id} />)
                 }
             </MainContentContainer>
             <Header profilePic={userData?.image}/>

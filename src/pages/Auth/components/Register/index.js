@@ -60,7 +60,10 @@ function Register() {
             }}>
                 { 
                     isLoading 
-                        ? <Loader className="loadingIco" type="ThreeDots" color="#fff" height={10} /> 
+                        ? <Loader className="loadingIco"
+                                  type="ThreeDots"
+                                  color="#fff"
+                                  height={10} /> 
                         : "Cadastrar"
                 }
             </Button>
