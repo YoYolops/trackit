@@ -1,3 +1,6 @@
+import Loader from "react-loader-spinner";
+import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
+
 import { CardContainer, ButtonContainer } from './style';
 import { Button } from '../../../../components/sharedStyles/index';
 import DaySelector from '../../../../components/DaySelector';
@@ -5,7 +8,8 @@ import DaySelector from '../../../../components/DaySelector';
 function RegisterHabitCard({ closeCard,
                              habitData,
                              setHabitData,
-                             sendNewHabit })
+                             sendNewHabit,
+                             isLoading })
 
 {
     const weekDays = [ "D", "S", "T", "Q", "Q", "S", "S" ];
@@ -30,6 +34,7 @@ function RegisterHabitCard({ closeCard,
     return (
         <CardContainer>
             <input
+                disabled={isLoading}
                 placeholder="nome do hábito"
                 value={habitData.name}
                 onChange={e => setHabitData({
@@ -59,6 +64,7 @@ function RegisterHabitCard({ closeCard,
                     height="35px"
                     filled={false}
                     onClick={() => { closeCard(false) }}
+                    disabled={isLoading}
                 >Cancelar</Button>
 
                 <Button
@@ -66,7 +72,13 @@ function RegisterHabitCard({ closeCard,
                     height="35px"
                     filled={true}
                     onClick={sendNewHabit}
-                >Salvar</Button>
+                    disabled={isLoading}
+                    isLoading={isLoading}
+                >{
+                    isLoading
+                        ? <Loader className="loadingIco" type="ThreeDots" color="#ffffff" height={10}  />
+                        : "Salvar"
+                }</Button>
             </ButtonContainer>
         </CardContainer>
     )

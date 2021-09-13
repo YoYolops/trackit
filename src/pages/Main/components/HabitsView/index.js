@@ -85,7 +85,8 @@ function HabitsView() {
                         ? <RegisterHabitCard habitData={habitData}
                                              setHabitData={setHabitData}
                                              closeCard={setShowRegisterHabitCard}
-                                             sendNewHabit={sendNewHabit}/>
+                                             sendNewHabit={sendNewHabit}
+                                             isLoading={isLoading} />
                         : null
                 }
 
