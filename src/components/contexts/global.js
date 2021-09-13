@@ -9,7 +9,7 @@ export function GlobalProvider({ children }) {
     const history = useHistory();
     const [ isLogged, setIsLogged ] = useState(false);
     const [ userData, setUserData ] = useState();
-    const [ isLoading, setIsLoading ] = useState(false);
+    const [ isLoading, setIsLoading ] = useState(false); // used to refresh app when server data is modified
 
     useEffect(() => {
         console.log("context useEffect")
@@ -65,7 +65,7 @@ export function GlobalProvider({ children }) {
         localStorage.setItem("trackit", trackit);
     }
 
-    function restartApp() {
+    function restartApp() { // It is never used, get rid off it
         localStorage.removeItem("trackit");
         setIsLogged(false);
         setUserData();

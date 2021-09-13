@@ -1,44 +1,29 @@
-import { useContext, useEffect, useState } from 'react';
+import { useContext, useEffect } from 'react';
 
 import GlobalContext from '../../../../components/contexts/global';
+import HabitsContext from '../../../../components/contexts/habits';
 import Footer from '../../../../components/Footer';
 import Header from '../../../../components/Header';
 import { SectionTitle } from '../../../../components/sharedStyles';
 import { MainContentContainer } from '../SharedStyles';
 import { SectionSubTitle } from './style.js';
-import Habits from '../../../../services/habitsManager';
 import TodayHabitCard from '../TodayHabitCard';
 
 function Today() {
     const { userData } = useContext(GlobalContext);
+    const { todaysHabits,
+            doneAmmount,
+            setDoneAmmount,
+            updateHabitsData } = useContext(HabitsContext);
+    
     const dias = [
         "Domingo", "Segunda", "Terça", "Quarta",
         "Quinta", "Sexta", "Sábado"
     ]
-    const [ todaysHabits, setTodaysHabits ] = useState([]);
-    const [ doneAmmount, setDoneAmmount ] = useState(0)
 
     useEffect(() => {
-        let unmounted = false;
-
-        async function getTodaysHabits() {
-            const response = await Habits.searchTodayHabits(userData.token);
-            if(!unmounted && response) {
-                let done = 0;
-                for(const habit of response) { 
-                    if(habit.done) done += 1;
-                } 
-                console.log(done)
-                setDoneAmmount(done);
-                setTodaysHabits(response);
-            }
-        }
-        if(!unmounted && userData) getTodaysHabits();
-
-        return () => { unmounted = true };
-    }, [userData])
-
-
+        updateHabitsData();
+    }, [])
 
     function generateDate() {
         const date = new Date();
@@ -49,11 +34,6 @@ function Today() {
         if(month.length === 1) month = "0" + month;
 
         return `${weekDay}, ${monthDay}/${month}`
-    }
-
-    function updateDoneAmmount(operation) {
-        if(operation === "increase") setDoneAmmount(doneAmmount + 1);
-        else setDoneAmmount(doneAmmount - 1);
     }
 
     return (
@@ -74,14 +54,13 @@ function Today() {
                                             isChecked={habit.done}
                                             streak={habit.currentSequence}
                                             record={habit.highestSequence}
-                                            ID={habit.id}
-                                            updateDoneAmmount={updateDoneAmmount}/>
+                                            ID={habit.id} />
                         )
                     })
                 }
             </MainContentContainer>
             <Header profilePic={userData?.image}/>
-            <Footer percentage={(100/todaysHabits.length)*doneAmmount} />
+            <Footer />
         </>
     )
 }

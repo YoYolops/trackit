@@ -6,34 +6,34 @@ import { TodayHabitCardContainer,
 import { AiFillCheckSquare } from 'react-icons/ai';
 import Habits from '../../../../services/habitsManager';
 import GlobalContext from '../../../../components/contexts/global';
+import HabitsContext from '../../../../components/contexts/habits';
 
 function TodayHabitCard({ isChecked,
                           title,
                           record,
                           streak,
-                          ID,
-                          updateDoneAmmount }) 
+                          ID }) 
 {
     const [ isClicked, setIsClicked ] = useState(isChecked);
     const { userData } = useContext(GlobalContext);
     const [ updatedStreak, setUpdatedStreak ] = useState(streak);
 
+    const { updateHabitsData } = useContext(HabitsContext);
+
     async function clickHandler() {
         let response;
-
-        console.log("id: ", ID)
 
         if(isClicked) {
             response = await Habits.markOffHabitAsDone(ID, userData.token);
             if(response) {
                 setUpdatedStreak(updatedStreak - 1);
-                updateDoneAmmount("decrease")
+                updateHabitsData();
             }
         } else {
             response = await Habits.markHabitAsDone(ID, userData.token);
             if(response) {
                 setUpdatedStreak(updatedStreak + 1);
-                updateDoneAmmount("increase");
+                updateHabitsData("increase");
             }
         }
 

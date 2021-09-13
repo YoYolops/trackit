@@ -1,23 +1,26 @@
 import { Link } from 'react-router-dom';
 import { useHistory } from 'react-router';
+import { useContext } from 'react';
 
+import HabitsContext from '../contexts/habits';
 import { MainContainer, BottomBar, CentralButtonContainer } from './style';
 import { CircularProgressbar, buildStyles } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
 
-function Footer({ percentage }) {
+function Footer() {
     const history = useHistory();
+    const { donePercentage } = useContext(HabitsContext);
 
     return (
         <MainContainer>
             <BottomBar>
                 <Link to="/main/habits">Hábitos</Link>
-                <Link to="/main/history">Histórico</Link>
+                <Link to="/main/historic">Histórico</Link>
             </BottomBar>
             <CentralButtonContainer onClick={() => {history.push("/main/today")}}>
                 <CircularProgressbar
                     className="progressButton"
-                    value={percentage}
+                    value={donePercentage}
                     text={"Hoje"}
                     strokeWidth={10}
                     background={true}

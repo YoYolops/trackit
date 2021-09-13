@@ -102,7 +102,7 @@ function HabitsView() {
                         : null
                 }
             </MainContentContainer>
-            <Footer percentage={30} />
+            <Footer />
             <Header profilePic={userData.image} />
         </>
     )
