@@ -1,4 +1,4 @@
-![Badge](https://img.shields.io/static/v1?label=npm&message=v7.23.0&color=b32222&style=for-the-badge&logo=npm) ![Badge](https://img.shields.io/static/v1?label=react&message=v17.0.2&color=00f7ff&style=for-the-badge&logo=react) <img src="https://img.shields.io/badge/styled--components-DB7093?style=for-the-badge&logo=styled-components&logoColor=white" />
+![Badge](https://img.shields.io/static/v1?label=yarn&message=v1.22.15&color=13a3bf&style=for-the-badge&logo=yarn) ![Badge](https://img.shields.io/static/v1?label=react&message=v17.0.2&color=00f7ff&style=for-the-badge&logo=react) <img src="https://img.shields.io/badge/styled--components-DB7093?style=for-the-badge&logo=styled-components&logoColor=white" />
 <img src="https://img.shields.io/badge/Vercel-000000?style=for-the-badge&logo=vercel&logoColor=white" />
 
 # TrackIt
